@@ -1,4 +1,4 @@
-package com.barberapp.service.username;
+package com.barberapp.service.user;
 
 import java.util.List;
 import java.util.Optional;
@@ -9,44 +9,44 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.barberapp.entities.Username;
+import com.barberapp.entities.User;
 import com.barberapp.repositories.RepositoryUsername;
 
 @Service
-public class ServiceUsernameImpl implements ServiceUsername{
+public class ServiceUserImpl implements ServiceUser{
 	
-	@Autowired(required = true) private RepositoryUsername repositoryUsername;
+	@Autowired(required = true) private RepositoryUsername repositoryUser;
 
 	@Override
 	@Transactional(readOnly = true)
-	public List<Username> findAll() {
+	public List<User> findAll() {
 		
-		return repositoryUsername.findAll();
+		return repositoryUser.findAll();
 	}
 
 	@Override
 	@Transactional(readOnly = true)
-	public Page<Username> findAll(Pageable pageable) {
+	public Page<User> findAll(Pageable pageable) {
 		
-		return repositoryUsername.findAll(pageable);
+		return repositoryUser.findAll(pageable);
 	}
 
 	@Override
 	@Transactional(readOnly = true)
-	public Optional<Username> findById(Long id) {
+	public Optional<User> findById(Long id) {
 		
-		return repositoryUsername.findById(id);
+		return repositoryUser.findById(id);
 	}
 
 	@Override
-	public Username save(Username username) {
+	public User save(User username) {
 		
-		return repositoryUsername.save(username);
+		return repositoryUser.save(username);
 	}
 
 	@Override
 	public void deleteById(Long id) {
-		repositoryUsername.deleteById(id);
+		repositoryUser.deleteById(id);
 		
 	}
 	

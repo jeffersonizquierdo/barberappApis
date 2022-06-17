@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Table (name = "usernames")
-public class Username implements Serializable{
+public class User implements Serializable{
 
 	/**
 	 * 
@@ -18,26 +18,26 @@ public class Username implements Serializable{
 	@Column (name = "type_username", nullable = false) private int typeUsername;
 	@Column (name = "email", nullable = false, unique = true) private String email;
 	@Column (name = "password") private String password;
-	@Column (name = "name") private String name;
 	@Column (name = "nickname") private String nickname;
+	@Column (name = "city") private String city;
 	@Column (name = "cellphone_number") private String cellphoneNumber;
 	
 	
-	public Username() {
+	public User() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
 
-	public Username(Long idUsername, int typeUsername, String email, String password, String name, String nickname,
+	public User(Long idUsername, int typeUsername, String email, String password, String nickname, String city,
 			String cellphoneNumber) {
 		super();
 		this.idUsername = idUsername;
 		this.typeUsername = typeUsername;
 		this.email = email;
 		this.password = password;
-		this.name = name;
 		this.nickname = nickname;
+		this.city = city;
 		this.cellphoneNumber = cellphoneNumber;
 	}
 
@@ -82,16 +82,6 @@ public class Username implements Serializable{
 	}
 
 
-	public String getName() {
-		return name;
-	}
-
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-
 	public String getNickname() {
 		return nickname;
 	}
@@ -99,6 +89,16 @@ public class Username implements Serializable{
 
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
+	}
+
+
+	public String getCity() {
+		return city;
+	}
+
+
+	public void setCity(String city) {
+		this.city = city;
 	}
 
 
@@ -120,7 +120,7 @@ public class Username implements Serializable{
 	@Override
 	public String toString() {
 		return "Username [idUsername=" + idUsername + ", typeUsername=" + typeUsername + ", email=" + email
-				+ ", password=" + password + ", name=" + name + ", nickname=" + nickname + ", cellphoneNumber="
+				+ ", password=" + password + ", nickname=" + nickname + ", city=" + city + ", cellphoneNumber="
 				+ cellphoneNumber + "]";
 	}
 
