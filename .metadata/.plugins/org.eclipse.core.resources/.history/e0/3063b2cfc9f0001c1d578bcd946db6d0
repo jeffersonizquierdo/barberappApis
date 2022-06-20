@@ -1,0 +1,87 @@
+package com.barberapp.entities;
+
+import java.io.Serializable;
+import java.sql.Date;
+
+import javax.persistence.*;
+
+
+@Entity
+@Table (name = "booking")
+public class Booking  implements Serializable{
+
+	
+	
+	private static final long serialVersionUID = 1L;
+	
+	@Id 
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id_booking ")
+	private Long id_booking ;
+	
+	@Column(name = "reservation_date ")
+	private String reservation_date ;
+	
+	@Column(name = "id_barbershop")
+	private int id_barbershop;
+	 
+	@Column(name = "id_customer")
+	private int id_customer;
+	
+	@Column(name = "acceptatance_status")
+	private boolean acceptatance_status ;
+   
+	@Column(name = " completed")
+	private boolean  completed;
+
+	public Long getId_booking() {
+		return id_booking;
+	}
+
+	public void setId_booking(Long id_booking) {
+		this.id_booking = id_booking;
+	}
+
+	public String getReservation_date() {
+		return reservation_date;
+	}
+
+	public void setReservation_date(String reservation_date) {
+		this.reservation_date = reservation_date;
+	}
+
+	public int getId_barbershop() {
+		return id_barbershop;
+	}
+
+	public void setId_barbershop(int id_barbershop) {
+		this.id_barbershop = id_barbershop;
+	}
+
+	public int getId_customer() {
+		return id_customer;
+	}
+
+	public void setId_customer(int id_customer) {
+		this.id_customer = id_customer;
+	}
+
+	public boolean isAcceptatance_status() {
+		return acceptatance_status;
+	}
+
+	public void setAcceptatance_status(boolean acceptatance_status) {
+		this.acceptatance_status = acceptatance_status;
+	}
+
+	public boolean isCompleted() {
+		return completed;
+	}
+
+	public void setCompleted(boolean completed) {
+		this.completed = completed;
+	}
+	
+	
+
+}

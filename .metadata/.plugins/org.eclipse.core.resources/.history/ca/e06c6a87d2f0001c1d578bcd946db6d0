@@ -1,0 +1,112 @@
+package com.barberapp.controllers;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.barberapp.entities.Booking;
+import com.barberapp.services.booking.ServiceBooking;
+
+
+@RestController
+@RequestMapping("booking")
+public class ControllerBooking {
+	
+	@Autowired(required = true) 
+	private ServiceBooking serviceBooking;
+	
+	
+	@GetMapping("hola")
+	public String saludo() {
+		
+		return "saludo desde controlador Booking";
+	}
+	
+
+	 /////////////////// USER REGISTRAR  BOOKING   http://localhost:8080/booking/save ////////////////
+	@PostMapping("/save")
+	public ResponseEntity<Booking> createBoorking (@RequestBody Booking booking){
+		
+		return ResponseEntity.status(HttpStatus.CREATED).body(serviceBooking.save(booking));
+	}
+	
+
+	/////////////////// CONSULT BOOKING http://localhost:8080/booking/consult ////////////////
+	@GetMapping("/consult/{id}")
+	public ResponseEntity<Optional<Booking>> consultBoorkingId (@PathVariable(value = "id_booking") Long id_booking){
+		
+		Optional<Booking> boorking = serviceBooking.findById(id_booking);
+		
+		if (boorking.isPresent()) {
+			return ResponseEntity.ok(boorking);
+		} else {
+			return ResponseEntity.notFound().build();
+		}
+	}
+	
+	/////////////////// DELETE  BOOKING   http://localhost:8080/booking/delete ////////////////
+	@DeleteMapping("/delete/{id}")
+	public ResponseEntity<Booking> deleteBoorking(@PathVariable(value = "id_booking")  Long id_booking){
+		
+		
+		if(serviceBooking.findById(id_booking).isPresent()) {
+			
+			serviceBooking.deleteById(id_booking);
+			return ResponseEntity.ok().build();
+			
+		} else {
+			
+			return ResponseEntity.notFound().build();
+		}
+	}
+	
+		/////////////////// CONSULT ALL BOOKING    http://localhost:8080/booking/consultall ///////////////	
+		@GetMapping("/consultall")
+		public  List<Booking> consultAllBoorking(){
+			
+			
+			List<Booking> boorking = StreamSupport
+					.stream(serviceBooking.findAll().spliterator(), false)
+					.collect(Collectors.toList());
+			
+			return  boorking;
+		}
+		
+		
+		/////////////////// UPDATE BOOKING   http://localhost:8080/booking/update ////////////////
+		@PutMapping("/update/{id}")
+		public ResponseEntity<Booking> updateBoorking (@RequestBody Booking newBoorking, @PathVariable(value = "id_booking") Long id_booking){
+			
+			Optional<Booking> boorking = serviceBooking.findById(id_booking);
+			if (boorking.isPresent()) {
+				
+				boorking.get().setReservation_date(newBoorking.getReservation_date());
+				boorking.get().setCompleted(false);
+				boorking.get().setAcceptatance_status(false);
+			
+				return ResponseEntity.status(HttpStatus.CREATED).body(serviceBooking.save(boorking.get()));
+				
+			} else {
+				return ResponseEntity.notFound().build();
+			}
+		}
+		
+		
+	
+	
+	
+
+}

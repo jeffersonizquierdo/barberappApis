@@ -1,0 +1,5 @@
+package com.barberapp.repositories;
+
+public interface RepositoryBooking {
+
+}

@@ -1,0 +1,5 @@
+package com.barberapp.entities;
+
+public class Booking {
+
+}

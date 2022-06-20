@@ -1,0 +1,26 @@
+package com.barberapp.controllers;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.barberapp.services.booking.ServiceBooking;
+
+
+@RestController
+@RequestMapping("booking")
+public class ControllerBooking {
+	
+	@Autowired(required = true) 
+	private ServiceBooking serviceUsername;
+	
+	
+	@GetMapping("hola")
+	public String saludo() {
+		
+		return "saludo desde controlador Booking";
+	}
+	
+
+}

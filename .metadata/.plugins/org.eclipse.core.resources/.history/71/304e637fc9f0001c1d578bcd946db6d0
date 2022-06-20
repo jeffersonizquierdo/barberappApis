@@ -1,0 +1,10 @@
+package com.barberapp.entities;
+
+import javax.persistence.*;
+
+
+@Entity
+@Table (name = "usernames")
+public class Booking {
+
+}
