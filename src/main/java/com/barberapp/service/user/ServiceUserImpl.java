@@ -10,12 +10,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.barberapp.entities.User;
-import com.barberapp.repositories.RepositoryUsername;
+import com.barberapp.repositories.RepositoryUser;
 
 @Service
 public class ServiceUserImpl implements ServiceUser{
 	
-	@Autowired(required = true) private RepositoryUsername repositoryUser;
+	@Autowired(required = true) private RepositoryUser repositoryUser;
 
 	@Override
 	@Transactional(readOnly = true)

@@ -14,8 +14,8 @@ public class User implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY) @Column (name = "id_username")private Long idUsername;
-	@Column (name = "type_username", nullable = false) private int typeUsername;
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY) @Column (name = "id_username")private Long idUser;
+	@Column (name = "type_user", nullable = false) private int typeUser;
 	@Column (name = "email", nullable = false, unique = true) private String email;
 	@Column (name = "password") private String password;
 	@Column (name = "nickname") private String nickname;
@@ -29,11 +29,11 @@ public class User implements Serializable{
 	}
 
 
-	public User(Long idUsername, int typeUsername, String email, String password, String nickname, String city,
+	public User(Long idUser, int typeUser, String email, String password, String nickname, String city,
 			String cellphoneNumber) {
 		super();
-		this.idUsername = idUsername;
-		this.typeUsername = typeUsername;
+		this.idUser = idUser;
+		this.typeUser = typeUser;
 		this.email = email;
 		this.password = password;
 		this.nickname = nickname;
@@ -42,23 +42,23 @@ public class User implements Serializable{
 	}
 
 
-	public Long getIdUsername() {
-		return idUsername;
+	public Long getIdUser() {
+		return idUser;
 	}
 
 
-	public void setIdUsername(Long idUsername) {
-		this.idUsername = idUsername;
+	public void setIdUser(Long idUser) {
+		this.idUser = idUser;
 	}
 
 
-	public int getTypeUsername() {
-		return typeUsername;
+	public int getTypeUser() {
+		return typeUser;
 	}
 
 
-	public void setTypeUsername(int typeUsername) {
-		this.typeUsername = typeUsername;
+	public void setTypeUser(int typeUser) {
+		this.typeUser = typeUser;
 	}
 
 
@@ -119,7 +119,7 @@ public class User implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Username [idUsername=" + idUsername + ", typeUsername=" + typeUsername + ", email=" + email
+		return "Username [idUsername=" + idUser + ", typeUser=" + typeUser + ", email=" + email
 				+ ", password=" + password + ", nickname=" + nickname + ", city=" + city + ", cellphoneNumber="
 				+ cellphoneNumber + "]";
 	}
