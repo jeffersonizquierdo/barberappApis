@@ -15,10 +15,8 @@ create table username (
 create table barber (
 	id_user int unsigned primary key not null,
 	age TinyInt (2) not null,
-	last_name varchar (45) not null,
 	date_of_birth date not null,
 	description varchar (300),
-	certificates char(20),
 	gender  char(1) not null,
 	qualification double not null,
 	city varchar (45) not null,
@@ -30,9 +28,6 @@ create table barber (
 
 create table customer (
 	id_user int unsigned primary key not null,
-	email varchar(200) not null,
-	name_client varchar (45) not null,
-	lastname varchar (20),
 	age TinyInt (2) not null,
 	gender char(1) not null
 );

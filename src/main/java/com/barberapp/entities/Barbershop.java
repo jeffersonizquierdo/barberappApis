@@ -1,6 +1,6 @@
 package com.barberapp.entities;
 
-import java.io.Serializable;
+import java.io.Serializable; 
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -19,7 +19,7 @@ public class Barbershop implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	@Id  @Column (name = "id_barbershop") private Long idBarbershop;
+	@Id  @Column (name = "id_user") private Long idBarbershop;
 	@Column (name = "location") private String location;
 	@Column (name = "qualification") private Double qualification;
 	@Column (name = "linked_barbers") private int linkedBarbers;
